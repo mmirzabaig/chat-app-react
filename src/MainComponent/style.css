@@ -1,0 +1,9 @@
+.chatbox {
+  color: red;
+  background-color: yellow;
+  border-color: 5px solid black;
+  height: 300px;
+  width: 300px;
+  margin-top: 20%;
+  margin-left: 50%;
+}
