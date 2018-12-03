@@ -6,14 +6,36 @@ export default class Signup extends Component {
   constructor(){
     super();
     this.state = {
-      data: [],
+      email: '',
+      username: '',
+      password: '',
+      linkedin: '',
     }
   }
   handleChange = (e) => {
-    console.log(e.currentTarget.value)
+    console.log(e.currentTarget.name)
     this.setState({
       [e.currentTarget.name]: e.currentTarget.value
     })
+  }
+  handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const createUser = await fetch('http://localhost:9000', {
+        method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify(this.state),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      console.log(createUser)
+
+    } catch (err) {
+      return(err);
+      console.log(err);
+    }
   }
 
   render(){
@@ -25,11 +47,11 @@ export default class Signup extends Component {
           <Form.Input type='text' name='username' placeholder='username' onChange={this.handleChange} />
           <Form.Input type='text' name='password' placeholder='password' onChange={this.handleChange} />
           <Form.Input type='text' name='linkedin' placeholder='LinkedIn' onChange={this.handleChange} />
-          <Link to='/'>
+
             <Button type='submit'>
               Submit
             </Button>
-          </Link>
+
         </Form>
       </div>
     )
