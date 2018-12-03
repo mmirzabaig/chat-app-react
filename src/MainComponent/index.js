@@ -27,7 +27,14 @@ class MainComponent extends Component {
             <h2>HELLO</h2>
           </div>
           <div className='categoryContainer'>
-            <h2>HELLO</h2>
+            <h2 className='categoryContainerHeading'>Categories</h2> <br/>
+            <h4 className='categoryContainerText'>Computer Science</h4>
+            <h4 className='categoryContainerText'>Science</h4>
+            <h4 className='categoryContainerText'>Mathmatics</h4>
+            <h4 className='categoryContainerText'>Books</h4>
+            <h4 className='categoryContainerText'>Philosophy</h4>
+            <h4 className='categoryContainerText'>Music</h4>
+
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-import {socket} from '../index'
-
+import React, { Component } from 'react';
+import { socket } from '../index'
 import ChatDisplay from '../ChatDisplay';
 
 class ChatRoom extends Component {
@@ -12,7 +11,7 @@ class ChatRoom extends Component {
   }
 
   componentDidMount(){
-    
+
     socket.on('messages', (message) => {
       console.log('message', message)
       this.setState({
