@@ -38,16 +38,13 @@ class MainComponent extends Component {
     }
 
     return(
-
-
       <div>
         <div className='chatbox'>
           <div className='chatboxContainer'>
             <h2 className='chatboxContainerHeading'>HELLO UserName</h2>
             <CreatePost />
-
           </div>
-          <Categories />
+            <Categories />
         </div>
       </div>
     );

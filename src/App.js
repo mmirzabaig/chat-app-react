@@ -6,6 +6,12 @@ import Signup from './Signup';
 import Welcome from './Welcome';
 import MainComponent from './MainComponent';
 import NavBar from './NavBar';
+import Mathematics from './Categories/Mathematics';
+import Books from './Categories/Books';
+import Philosophy from './Categories/Philosophy';
+import Science from './Categories/Science';
+import CompScieWebDes from './Categories/ComputerScience-WebDesign';
+import Music from './Categories/Music';
 
 
 
@@ -19,6 +25,12 @@ class App extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path="/" component={MainComponent} />
+          <Route exact path='/mathematics' component={Mathematics} />
+          <Route exact path='/books' component={Books} />
+          <Route exact path='/philosophy' component={Philosophy} />
+          <Route exact path='/science' component={Science} />
+          <Route exact path='/compsciewebdes' component={CompScieWebDes} />
+          <Route exact path='/music' component={Music} />
         </Switch>
       </div>
     );
