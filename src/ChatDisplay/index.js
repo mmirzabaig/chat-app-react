@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { socket } from '../index';
+import {Form, Button} from 'semantic-ui-react';
 class ChatDisplay extends Component {
   constructor(){
     super();
@@ -24,9 +25,9 @@ class ChatDisplay extends Component {
 
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input type='text' value={this.state.messageValue} onChange={this.handleChange}/>
-        </form>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Input type='text' value={this.state.messageValue} onChange={this.handleChange}/>
+        </Form>
         <ul>
           {messages}
         </ul>

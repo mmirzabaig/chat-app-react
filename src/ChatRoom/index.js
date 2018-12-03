@@ -12,7 +12,7 @@ class ChatRoom extends Component {
   }
 
   componentDidMount(){
-    console.log('CHATROOOM')
+    
     socket.on('messages', (message) => {
       console.log('message', message)
       this.setState({

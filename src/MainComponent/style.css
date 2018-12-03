@@ -1,9 +1,21 @@
 .chatbox {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10%;
+}
+
+.chatboxContainer {
   color: red;
   background-color: yellow;
-  border-color: 5px solid black;
-  height: 300px;
-  width: 300px;
-  margin-top: 20%;
-  margin-left: 50%;
+  border: 5px solid black;
+  height: 600px;
+  width: 400px;
+}
+
+.categoryContainer {
+  color: blue;
+  background-color: black;
+  border: 5px solid yellow;
+  height: 600px;
+  width: 400px;
 }

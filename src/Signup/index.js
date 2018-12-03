@@ -24,6 +24,7 @@ export default class Signup extends Component {
           <Form.Input type='text' name='email' placeholder='email address' onChange={this.handleChange} />
           <Form.Input type='text' name='username' placeholder='username' onChange={this.handleChange} />
           <Form.Input type='text' name='password' placeholder='password' onChange={this.handleChange} />
+          <Form.Input type='text' name='linkedin' placeholder='LinkedIn' onChange={this.handleChange} />
           <Link to='/'>
             <Button type='submit'>
               Submit
