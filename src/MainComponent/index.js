@@ -3,6 +3,9 @@ import { socket } from '../index';
 import ChatRoom from '../ChatRoom';
 import './style.css';
 import FileUpload from '../FileUpload';
+import { Button } from 'semantic-ui-react';
+import CreatePost from '../CreatePost';
+import Categories from '../Categories';
 
 class MainComponent extends Component {
   constructor(){
@@ -13,29 +16,38 @@ class MainComponent extends Component {
     }
   }
 
+  handleCreatePost = (e) => {
+    e.preventDefault();
 
+  }
 
   render(){
 
     socket.emit('message', 'MIRZAaaaaaa');
+    const buttonStyle =  {
+      display: 'flex',
+      color: 'white',
+      backgroudColor: 'blue',
+      justifyContent: 'center',
+      fontSize: '30px',
+      marginTop: '25%',
+      marginLeft: '10%',
+      borderRadius: '50%',
+      height: '300px',
+      width: '300px'
+    }
 
     return(
+
 
       <div>
         <div className='chatbox'>
           <div className='chatboxContainer'>
-            <h2>HELLO</h2>
-          </div>
-          <div className='categoryContainer'>
-            <h2 className='categoryContainerHeading'>Categories</h2> <br/>
-            <h4 className='categoryContainerText'>Computer Science</h4>
-            <h4 className='categoryContainerText'>Science</h4>
-            <h4 className='categoryContainerText'>Mathmatics</h4>
-            <h4 className='categoryContainerText'>Books</h4>
-            <h4 className='categoryContainerText'>Philosophy</h4>
-            <h4 className='categoryContainerText'>Music</h4>
+            <h2 className='chatboxContainerHeading'>HELLO UserName</h2>
+            <CreatePost />
 
           </div>
+          <Categories />
         </div>
       </div>
     );

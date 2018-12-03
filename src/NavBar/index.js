@@ -27,9 +27,9 @@ export default class MenuExampleInverted extends Component {
             </Menu.Item>
           </Link>
 
-          <Link to="/brewTour">
-            <Menu.Item name='View Your Tour'
-              active={activeItem === 'View Your Tour'}
+          <Link to="/">
+            <Menu.Item name='Profile'
+              active={activeItem === 'View Your Profile'}
               onClick={this.handleItemClick}>
             </Menu.Item>
           </Link>
