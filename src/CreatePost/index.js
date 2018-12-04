@@ -58,11 +58,11 @@ class CreatePost extends Component {
             <Form onSubmit={this.handleSubmit}>
               <Form.Input name='topic' type='text' placeholder='Post Topic' onChange={this.handleChange} /> <br/>
               <Form.TextArea name='description' type='text' placeholder='Post Description' onChange={this.handleChange} /> <br/>
-              <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='CompScieWebDes' /> Celebrity
-              <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Science' /> Movies
-              <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Books'/> Sports
-              <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Mathematics' /> Music
-              <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Philosophy'/> Sports
+              <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='CompScieWebDes' /> ComputerScience-WebDesign
+              <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Science' /> Science
+              <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Books'/> Books
+              <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Mathematics' /> Mathematics
+              <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Philosophy'/> Philosophy
               <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Music' /> Music <br/><br/><br/>
               <Button>Create</Button>
             </Form>

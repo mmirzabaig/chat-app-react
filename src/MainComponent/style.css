@@ -5,7 +5,7 @@
 }
 
 .chatboxContainer {
-  color: red;
+  color: black;
   background-color: yellow;
   border: 5px solid black;
   height: 600px;
@@ -14,7 +14,7 @@
 
 .chatboxContainerHeading {
   color: darkblue;
-  margin-bottom: 0;
+  margin-bottom: 10%;
   font-size: 40px;
 }
 
