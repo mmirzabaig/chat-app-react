@@ -12,6 +12,7 @@ import Philosophy from './Categories/Philosophy';
 import Science from './Categories/Science';
 import CompScieWebDes from './Categories/ComputerScience-WebDesign';
 import Music from './Categories/Music';
+import Hello from './Hello';
 
 
 
@@ -21,6 +22,7 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <Switch>
+          <Route exact path='/hello' component={Hello} />
           <Route exact path='/welcome' component={Welcome} />
           <Route exact path="/login" component={Login} />
           <Route exact path='/signup' component={Signup} />

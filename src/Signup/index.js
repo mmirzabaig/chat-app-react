@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button, Input } from 'semantic-ui-react';
+import { socket } from '../index';
 
 export default class Signup extends Component {
   constructor(){
@@ -22,16 +23,7 @@ export default class Signup extends Component {
     e.preventDefault();
 
     try {
-      const createUser = await fetch('http://localhost:9000', {
-        method: 'POST',
-        credentials: 'include',
-        body: JSON.stringify(this.state),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      console.log(createUser)
-
+      socket.emit('registerUser', this.state);
     } catch (err) {
       return(err);
       console.log(err);

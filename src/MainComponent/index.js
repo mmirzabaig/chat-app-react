@@ -23,7 +23,6 @@ class MainComponent extends Component {
 
   render(){
 
-    socket.emit('message', 'MIRZAaaaaaa');
     const buttonStyle =  {
       display: 'flex',
       color: 'white',

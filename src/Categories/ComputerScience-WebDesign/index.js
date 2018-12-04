@@ -1,34 +1,32 @@
 import React, { Component } from 'react';
 import Categories from '../';
 import DisplayPosts from '../DisplayPosts';
+import { socket } from '../../index'
 
 
 class CompScieWebDes extends Component {
   constructor() {
     super();
     this.state = {
-      categoryData: [],
+      data: [],
     }
   }
 
-  getCategories = async (e) => {
-    try {
-      const getCategoryData = await fetch('http://localhost:9000/post/compsciewebdes');
-      const getCategoryDataJson = await getCategoryData.json();
-      return getCategoryDataJson;
-
-    } catch(err) {
-      console.log(err);
-      return(err);
+  getCategories =  (e) => {
+      socket.emit('findCompScieWebDes', 'findCompScieWebDes')
     }
-  }
+
 
   componentDidMount() {
-    this.getCategories().then((data) => {
+    socket.on('foundCompScieWebDes', (data) => {
+      console.log(data, 'MirZA')
       this.setState({
         categoryData: data
-      })
+      });
+      console.log(this.state.categoryData, 'JAMES')
     })
+
+    this.getCategories();
   }
 
   render() {
@@ -37,7 +35,7 @@ class CompScieWebDes extends Component {
               <div className='chatbox'>
                 <div className='chatboxContainer'>
                   <h2 className='chatboxContainerHeading'>Computer Science & Web Design</h2>
-                  {this.state.categoryData.data ? <DisplayPosts postsData={this.state.categoryData.data}/> : null}
+                  {this.state.categoryData ? <DisplayPosts postsData={this.state.categoryData}/> : null}
                 </div>
                   <Categories />
               </div>
@@ -45,5 +43,6 @@ class CompScieWebDes extends Component {
     );
   }
 }
+
 
 export default CompScieWebDes;

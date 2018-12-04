@@ -1,33 +1,31 @@
 import React, { Component } from 'react';
 import Categories from '../';
 import DisplayPosts from '../DisplayPosts';
+import { socket } from '../../index.js';
 
 class Mathematics extends Component {
   constructor() {
     super();
     this.state = {
-      categoryData: [],
+      data: [],
     }
   }
 
-  getCategories = async (e) => {
-    try {
-      const getCategoryData = await fetch('http://localhost:9000/post/mathematics');
-      const getCategoryDataJson = await getCategoryData.json();
-      return getCategoryDataJson;
-
-    } catch(err) {
-      console.log(err);
-      return(err);
+  getCategories =  (e) => {
+      socket.emit('findMathematics', 'findMathematicsData')
     }
-  }
+
 
   componentDidMount() {
-    this.getCategories().then((data) => {
+    socket.on('foundMathematics', (data) => {
+      console.log(Date(), 'MirZA')
       this.setState({
         categoryData: data
-      })
+      });
+      console.log(this.state.categoryData, 'JAMES')
     })
+
+    this.getCategories();
   }
 
   render() {
@@ -36,7 +34,7 @@ class Mathematics extends Component {
               <div className='chatbox'>
                 <div className='chatboxContainer'>
                   <h2 className='chatboxContainerHeading'>Mathematics</h2>
-                  {this.state.categoryData.data ? <DisplayPosts postsData={this.state.categoryData.data}/> : null}
+                  {this.state.categoryData ? <DisplayPosts postsData={this.state.categoryData}/> : null}
                 </div>
                   <Categories />
               </div>

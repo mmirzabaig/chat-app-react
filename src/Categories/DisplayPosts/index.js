@@ -25,6 +25,7 @@ const DisplayPosts = (props) => {
       </div>
     );
   })
+  console.log(props, 'PROPS')
   return(
     <div>
       {displayPosts}

@@ -7,7 +7,7 @@ export default class Auth extends Component {
     super();
     this.state = {
       username: '',
-      password: ''
+      password: '',
     }
   }
   handleChange = (e) => {
