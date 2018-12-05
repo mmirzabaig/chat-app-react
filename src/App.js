@@ -13,6 +13,7 @@ import Science from './Categories/Science';
 import CompScieWebDes from './Categories/ComputerScience-WebDesign';
 import Music from './Categories/Music';
 import Hello from './Hello';
+import DirectMessages from './DirectMessages';
 
 
 
@@ -33,6 +34,7 @@ class App extends Component {
           <Route exact path='/science' component={Science} />
           <Route exact path='/compsciewebdes' component={CompScieWebDes} />
           <Route exact path='/music' component={Music} />
+          <Route exact path='/messages' component={DirectMessages} />
         </Switch>
       </div>
     );

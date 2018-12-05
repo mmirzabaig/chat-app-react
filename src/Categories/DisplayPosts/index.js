@@ -19,9 +19,8 @@ const DisplayPosts = (props) => {
   const displayPosts = props.postsData.map((item) => {
     return (
       <div style={style}>
-        <p style={{fontSize: '20px'}}>{item.topic}</p>
-        <ViewPost topic={item.topic} description={item.description}/>
-
+        <p style={{fontSize: '20px'}}>{item.topic}</p><p style={{fontSize: '20px'}}>{item.time}</p>
+        <ViewPost topic={item.topic} description={item.description} time={item.time} id={item._id}/>
       </div>
     );
   })

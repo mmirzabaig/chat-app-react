@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { Button, Header, Image, Modal, Input, Form } from 'semantic-ui-react'
+import { Button, Header, Image, Modal, Input, Form } from 'semantic-ui-react';
+import { socket } from '../../../index.js';
 
 
 const ViewPost = (props) => {
   const handleSubmit = () => {
-
+    console.log('it submits')
+    socket.emit('requestTalk', props);
   }
       console.log('HELLO', props)
     return(
@@ -15,7 +17,7 @@ const ViewPost = (props) => {
             <Form onSubmit={handleSubmit}>
               <p>{props.topic}</p> <br/>
               <p>{props.description}</p> <br/>
-              <Button>Create</Button>
+              <Button>Let's Talk!</Button>
             </Form>
           </Modal.Description>
         </Modal.Content>

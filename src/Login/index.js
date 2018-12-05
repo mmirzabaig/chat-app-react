@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Input, Button } from 'semantic-ui-react';
+import { socket } from '../index.js';
+import swal from '@sweetalert/with-react';
+import { Redirect } from 'react-router-dom';
 
 export default class Auth extends Component {
   constructor(){
@@ -8,6 +11,7 @@ export default class Auth extends Component {
     this.state = {
       username: '',
       password: '',
+      redirect: false,
     }
   }
   handleChange = (e) => {
@@ -18,8 +22,23 @@ export default class Auth extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
+    socket.emit('loginUser', this.state);
     console.log('hello')
   }
+
+  componentDidMount() {
+    socket.on('auth', (response) => {
+      if (response === 'Incorrect Username Or Password') {
+        swal('Incorrect Username Or Password');
+      } else {
+        swal('Login Successfull')
+        this.setState({
+          redirect: true
+        })
+      }
+    })
+  }
+
   render(){
 
     const formStyle = {
@@ -33,7 +52,8 @@ export default class Auth extends Component {
         <Form onSubmit={this.handleSubmit} style={formStyle}>
           <Form.Input type='text' placeholder='username' name='username' onChange={this.handleChange} />
           <Form.Input type='text' placeholder='password' name='password' onChange={this.handleChange} />
-          <Link to='/'><Button type='submit'>Submit</Button></Link>
+          <Button type='submit'>Submit</Button>
+          {this.state.redirect ? <Redirect to='/' /> : null}
         </Form>
       </div>
     );

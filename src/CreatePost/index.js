@@ -12,7 +12,7 @@ class CreatePost extends Component {
       description: '',
       category: '',
       time: '',
-      guest: '',
+      guest: [],
     }
   }
   handleChange = (e) => {
@@ -56,7 +56,6 @@ class CreatePost extends Component {
           <Modal.Description>
             <Header>Create A Post</Header>
             <Form onSubmit={this.handleSubmit}>
-              <Form.Input name='username' type='text' value='Mirza' onChange={this.handleChange} /> <br/>
               <Form.Input name='topic' type='text' placeholder='Post Topic' onChange={this.handleChange} /> <br/>
               <Form.TextArea name='description' type='text' placeholder='Post Description' onChange={this.handleChange} /> <br/>
               <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='CompScieWebDes' /> ComputerScience-WebDesign
@@ -65,9 +64,7 @@ class CreatePost extends Component {
               <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Mathematics' /> Mathematics
               <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Philosophy'/> Philosophy
               <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Music' /> Music <br/><br/><br/>
-              <Form.Input name='time' type='text' placeholder='Write Hour For Ex (16)' onChange={this.handleChange} />
-              <Form.Input name='time' type='text' placeholder='Write Min For Ex (54)' onChange={this.handleChange} /> <br/>
-              <Form.Input name='guest' type='text' value='Guest To Be Determined' onChange={this.handleChange} /> <br/>
+              <Form.Input name='time' type='time' placeholder='Write Hour For Ex (16)' onChange={this.handleChange} />
               <Button>Create</Button>
             </Form>
 
