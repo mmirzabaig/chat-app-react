@@ -1,7 +1,7 @@
 .categoryContainer {
-  color: white;
-  background-color: black;
-  border: 5px solid yellow;
+  color: black;
+  background-color: #999999;
+  border: 5px solid black;
   height: 600px;
   width: 400px;
 }
@@ -12,11 +12,11 @@
   font-size: 20px;
   margin: 10%;
   text-decoration: none;
-  color: white;
+  color: black;
 }
 
 .categoryContainerHeading {
-  color: purple;
+  color: black;
   margin-bottom: 0;
   font-size: 50px;
 }

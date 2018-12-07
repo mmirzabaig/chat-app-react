@@ -45,6 +45,14 @@ export default class MenuExampleInverted extends Component {
             onClick={this.handleItemClick}>
           </Menu.Item>
 
+          <Link style={style} to="/chatroom">
+            <Menu.Item name='Chatroom'
+              active={activeItem === 'Chatroom'}
+              onClick={this.handleItemClick}>
+            </Menu.Item>
+          </Link>
+
+
           <Link style={style} to="/messages">
             <Menu.Item name='Messages'
               active={activeItem === 'Messages'}
@@ -58,6 +66,7 @@ export default class MenuExampleInverted extends Component {
               onClick={this.handleItemClick}>
             </Menu.Item>
           </Link>
+
 
         </Menu>
       </div>

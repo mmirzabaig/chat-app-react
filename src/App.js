@@ -14,6 +14,7 @@ import CompScieWebDes from './Categories/ComputerScience-WebDesign';
 import Music from './Categories/Music';
 import Hello from './Hello';
 import DirectMessages from './DirectMessages';
+import Chatroom from './ChatRoom';
 
 
 
@@ -35,6 +36,8 @@ class App extends Component {
           <Route exact path='/compsciewebdes' component={CompScieWebDes} />
           <Route exact path='/music' component={Music} />
           <Route exact path='/messages' component={DirectMessages} />
+          <Route exact path='/chatroom' component={Chatroom} />
+
         </Switch>
       </div>
     );

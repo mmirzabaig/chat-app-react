@@ -6,6 +6,10 @@ import FileUpload from '../FileUpload';
 import { Button } from 'semantic-ui-react';
 import CreatePost from '../CreatePost';
 import Categories from '../Categories';
+import Moment from 'react-moment';
+import 'moment-timezone';
+
+
 
 class MainComponent extends Component {
   constructor(){
@@ -13,6 +17,7 @@ class MainComponent extends Component {
     this.state = {
       data: '',
       messages: [],
+      currentUser: ''
     }
   }
 
@@ -21,7 +26,19 @@ class MainComponent extends Component {
 
   }
 
+  componentDidMount(){
+    socket.on('currentUser', (user) => {
+      this.setState({
+        currentUser: user
+      });
+    })
+  }
+
   render(){
+    let time = Date();
+console.log(time.toString().split(' '), 'MSRK');
+    console.log(Moment, 'MOMENT TIME')
+    const dateToFormat = '1976-04-19T12:59-0500';
 
     const buttonStyle =  {
       display: 'flex',
@@ -37,11 +54,12 @@ class MainComponent extends Component {
     }
 
     return(
-      <div>
+      <div className='mainComp'>
         <div className='chatbox'>
           <div className='chatboxContainer'>
-            <h2 className='chatboxContainerHeading'>HELLO UserName</h2>
+            <h2 className='chatboxContainerHeading'>HELLO {this.state.currentUser}</h2>
             <CreatePost />
+
           </div>
             <Categories />
         </div>
