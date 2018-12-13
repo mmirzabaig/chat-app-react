@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Categories from '../';
 import DisplayPosts from '../DisplayPosts';
 import { socket } from '../../index.js';
+import swal from '@sweetalert/with-react';
 
 class Mathematics extends Component {
   constructor() {
@@ -18,11 +19,16 @@ class Mathematics extends Component {
 
   componentDidMount() {
     socket.on('foundMathematics', (data) => {
-      console.log(Date(), 'MirZA')
-      this.setState({
-        categoryData: data
-      });
-      console.log(this.state.categoryData, 'JAMES')
+      console.log(data, 'YES ITS DATAAAA')
+      if (data === 'Incorrect Username Or Password') {
+        swal('Please Log In');
+        console.log(Date(), 'MirZA')
+        this.setState({
+          categoryData: data
+        });
+        console.log(this.state.categoryData, 'JAMES')
+      }
+
     })
 
     this.getCategories();
