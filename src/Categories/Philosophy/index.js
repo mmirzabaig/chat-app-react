@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Categories from '../';
 import DisplayPosts from '../DisplayPosts';
 import { socket } from '../../index';
+import swal from '@sweetalert/with-react';
 
 
 class Philosophy extends Component {
@@ -18,11 +19,13 @@ class Philosophy extends Component {
 
     componentDidMount() {
       socket.on('foundPhilosophy', (data) => {
-        console.log(data, 'MirZA')
-        this.setState({
-          categoryData: data
-        });
-        console.log(this.state.categoryData, 'JAMES')
+        if (data === 'Incorrect Username Or Password') {
+          swal('Please Log In');
+        } else {
+          this.setState({
+            categoryData: data
+          })
+        }
       })
 
       this.getCategories();

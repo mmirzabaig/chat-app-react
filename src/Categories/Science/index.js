@@ -21,16 +21,13 @@ class Science extends Component {
 
     componentDidMount() {
       socket.on('foundScience', (data) => {
-        console.log(data, 'MirZA')
         if (data === 'Incorrect Username Or Password') {
           swal('Please Log In');
         } else {
           this.setState({
             categoryData: data
           })
-          console.log(this.state.categoryData, 'JAMES')
         }
-        console.log(this.state.categoryData, 'JAMES')
       })
 
       this.getCategories();

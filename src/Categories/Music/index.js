@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Categories from '../';
 import DisplayPosts from '../DisplayPosts';
-import { socket } from '../../index.js'; 
+import { socket } from '../../index.js';
+import swal from '@sweetalert/with-react';
 
 
 class Music extends Component {
@@ -19,11 +20,14 @@ class Music extends Component {
 
   componentDidMount() {
     socket.on('foundMusic', (data) => {
-      console.log(data, 'MirZA')
-      this.setState({
-        categoryData: data
-      });
-      console.log(this.state.categoryData, 'JAMES')
+      if (data === 'Incorrect Username Or Password') {
+        swal('Please Log In');
+      } else {
+        this.setState({
+          categoryData: data
+        })
+        console.log(this.state.categoryData, 'JAMES')
+      }
     })
 
     this.getCategories();
