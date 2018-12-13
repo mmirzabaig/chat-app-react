@@ -22,10 +22,11 @@ class Mathematics extends Component {
       console.log(data, 'YES ITS DATAAAA')
       if (data === 'Incorrect Username Or Password') {
         swal('Please Log In');
+      } else {
         console.log(Date(), 'MirZA')
         this.setState({
           categoryData: data
-        });
+        })
         console.log(this.state.categoryData, 'JAMES')
       }
 
