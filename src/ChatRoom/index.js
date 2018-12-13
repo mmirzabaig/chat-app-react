@@ -7,15 +7,18 @@ class ChatRoom extends Component {
     super();
     this.state = {
       messages: [],
+      username: ''
     }
   }
 
   componentDidMount(){
 
-    socket.on('messages', (message) => {
-      console.log('message', message)
+    socket.on('messages', (msgObj) => {
+      console.log('message', msgObj)
       this.setState({
-        messages: [...message]
+        messages: [...msgObj.messages],
+        username: msgObj.username
+
       })
     });
   }
@@ -24,7 +27,7 @@ class ChatRoom extends Component {
 
     return (
       <div>
-        <ChatDisplay messages={this.state.messages}/>
+        <ChatDisplay username={this.state.username} messages={this.state.messages}/>
       </div>
       )
   }

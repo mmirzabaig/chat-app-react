@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import Login from './Login';
+import Logout from './Logout';
 import Signup from './Signup';
 import Welcome from './Welcome';
 import MainComponent from './MainComponent';
@@ -15,10 +16,32 @@ import Music from './Categories/Music';
 import Hello from './Hello';
 import DirectMessages from './DirectMessages';
 import Chatroom from './ChatRoom';
+import { socket } from './index';
+
 
 
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      logged: false
+    }
+  }
+
+  componentDidMount(){
+    socket.on('session', (data) => {
+      if (data === 'loggedIn') {
+        this.setState({
+          logged: true
+        })
+      } else {
+        this.setState({
+          logged: false
+        })
+      }
+    })
+  }
   render() {
     return (
       <div className="App">
@@ -26,7 +49,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/hello' component={Hello} />
           <Route exact path='/welcome' component={Welcome} />
-          <Route exact path="/login" component={Login} />
+          {this.state.logged ? <Route exact path="/logout" component={Logout} /> : <Route exact path="/login" component={Login} /> }  
           <Route exact path='/signup' component={Signup} />
           <Route exact path="/" component={MainComponent} />
           <Route exact path='/mathematics' component={Mathematics} />

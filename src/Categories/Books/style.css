@@ -5,15 +5,15 @@
 }
 
 .chatboxContainer {
-  color: red;
-  background-color: yellow;
+  color: black;
+  background-color: #999999;
   border: 5px solid black;
   height: 600px;
   width: 400px;
 }
 
 .chatboxContainerHeading {
-  color: darkblue;
+  color: black;
   margin-bottom: 0;
   font-size: 40px;
 }

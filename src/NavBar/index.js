@@ -1,13 +1,36 @@
 import React, { Component } from 'react'
 import { Menu, Segment, Image} from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
+import { socket } from '../index';
 
 
 export default class MenuExampleInverted extends Component {
-  state = { activeItem: 'home' }
+  constructor(){
+    super();
+    this.state = {
+          activeItem: 'home',
+          logged: false,
+          route: '/login',
+          authRoute: 'Login'
+        }
+  }
+
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleLoggin = () => {
 
+  }
+  componentDidMount(){
+    socket.on('session', (data) => {
+      if (data === 'loggedIn') {
+        this.setState({
+          logged: true,
+          route: '/logout',
+          authRoute: 'Logout'
+        })
+      }
+    })
+  }
   render() {
     const { activeItem } = this.state;
 
@@ -60,9 +83,9 @@ export default class MenuExampleInverted extends Component {
             </Menu.Item>
           </Link>
 
-          <Link style={style} to="/login">
-            <Menu.Item name='Login'
-              active={activeItem === 'Login'}
+          <Link style={style} to={this.state.route} >
+            <Menu.Item name={this.state.authRoute}
+              active={activeItem === this.state.authRoute}
               onClick={this.handleItemClick}>
             </Menu.Item>
           </Link>
