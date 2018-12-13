@@ -15,14 +15,27 @@ class Books extends Component {
         socket.emit('findBooks', 'findBooks')
       }
 
+      componentDidMount() {
+        socket.on('foundMathematics', (data) => {
+          console.log(data, 'YES ITS DATAAAA')
+
+
+        })
+
+        this.getCategories();
+      }
 
     componentDidMount() {
       socket.on('foundBooks', (data) => {
         console.log(data, 'MirZA')
-        this.setState({
-          categoryData: data
-        });
-        console.log(this.state.categoryData, 'JAMES')
+        if (data === 'Incorrect Username Or Password') {
+          swal('Please Log In');
+        } else {
+          this.setState({
+            categoryData: data
+          })
+          console.log(this.state.categoryData, 'JAMES')
+        }
       })
 
       this.getCategories();
