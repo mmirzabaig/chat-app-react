@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Categories from '../';
 import DisplayPosts from '../DisplayPosts';
 import { socket } from '../../index';
+import swal from '@sweetalert/with-react';
+
 
 class Books extends Component {
   constructor() {
