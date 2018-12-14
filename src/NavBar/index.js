@@ -9,7 +9,6 @@ export default class MenuExampleInverted extends Component {
     super();
     this.state = {
           activeItem: 'home',
-          logged: false,
           route: '/login',
           authRoute: 'Login'
         }
@@ -22,11 +21,17 @@ export default class MenuExampleInverted extends Component {
   }
   componentDidMount(){
     socket.on('session', (data) => {
+      console.log('THIS IS LOGIN DATA', data);
       if (data === 'loggedIn') {
         this.setState({
-          logged: true,
           route: '/logout',
           authRoute: 'Logout'
+        })
+      } else {
+        this.setState({
+          logged: true,
+          route: '/login',
+          authRoute: 'Login'
         })
       }
     })
