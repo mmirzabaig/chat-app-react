@@ -18,7 +18,6 @@ class ChatDisplay extends Component {
   }
 
   render(){
-    console.log(this.props.messages, ' this is this.props');
     const messages = this.props.messages.map((message, i) => {
       return <li key={i}>{message.username}: {message.message} </li>
     });
