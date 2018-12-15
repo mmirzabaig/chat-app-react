@@ -1,6 +1,8 @@
 ## Available Scripts
 In the project directory, you can run:
-### `npm start`
+
+### 1- `npm install`
+### 2- `npm start`
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 # Chat App
@@ -31,7 +33,7 @@ A User-friendly platform to locate breweries in and around Austin, TX and also g
 
 ## Stretch Goals:
 
-
+## Images:
 ![alt text](./public/images/home.png "Logo Title Text 1")
 ![alt text](./public/images/login.png "Logo Title Text 1")
 ![alt text](./public/images/books.png "Logo Title Text 1")
