@@ -16,9 +16,7 @@ class ChatRoom extends Component {
     socket.on('messages', (msgObj) => {
       console.log('message', msgObj)
       this.setState({
-        messages: [...msgObj.messages],
-        username: msgObj.username
-
+        messages: [...msgObj],
       })
     });
   }
@@ -27,7 +25,7 @@ class ChatRoom extends Component {
 
     return (
       <div>
-        <ChatDisplay username={this.state.username} messages={this.state.messages}/>
+        <ChatDisplay messages={this.state.messages}/>
       </div>
       )
   }
