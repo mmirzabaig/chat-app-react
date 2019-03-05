@@ -24,12 +24,12 @@ class ViewRequests extends Component {
   render(){
 
     const request = this.props.props.guest.map((item) => {
-      console.log(item._id, 'JAAAAAAYYYYYYYYY')
+      console.log(item, 'JAAAAAAYYYYYYYYY')
       return (
         <Card>
           <Card.Content>
             <Card.Meta>
-                <Button id={item._id} onClick={this.handleClick}>Yes</Button>
+                <Button id={this.props.props._id} onClick={this.handleClick}>Yes</Button>
             </Card.Meta>
             <Card.Description>{item.username}</Card.Description>
           </Card.Content>

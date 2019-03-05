@@ -1,3 +1,4 @@
+import { subscribeToTimer } from './api';
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
@@ -25,22 +26,16 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      logged: false
+      logged: false,
+      timestamp: 'no timestamp yet'
     }
   }
 
   componentDidMount(){
-    socket.on('session', (data) => {
-      if (data === 'loggedIn') {
-        this.setState({
-          logged: true
-        })
-      } else {
-        this.setState({
-          logged: false
-        })
-      }
-    })
+    console.log(this.state.timestamp, 'mirza')
+    subscribeToTimer((err, timestamp) => this.setState({
+      timestamp
+    }));
   }
   render() {
     return (
@@ -49,7 +44,8 @@ class App extends Component {
         <Switch>
           <Route exact path='/hello' component={Hello} />
           <Route exact path='/welcome' component={Welcome} />
-          {this.state.logged ? <Route exact path="/logout" component={Logout} /> : <Route exact path="/login" component={Login} /> }  
+          <Route exact path="/logout" component={Logout} />
+          <Route exact path="/login" component={Login} /> 
           <Route exact path='/signup' component={Signup} />
           <Route exact path="/" component={MainComponent} />
           <Route exact path='/mathematics' component={Mathematics} />

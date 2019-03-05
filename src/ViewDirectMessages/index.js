@@ -25,7 +25,7 @@ class ViewDirectMessages extends Component {
               <span className='date'>{item.description}</span>
 
             </Card.Meta>
-            <Card.Description>{item.username}</Card.Description>
+            <Card.Description>{item.guest[0]}</Card.Description>
             <ViewRequests props={item}/>
           </Card.Content>
         </Card>

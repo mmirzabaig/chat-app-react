@@ -36,9 +36,8 @@ class MainComponent extends Component {
 
   render(){
     let time = Date();
-console.log(time.toString().split(' '), 'MSRK');
-    console.log(Moment, 'MOMENT TIME')
     const dateToFormat = '1976-04-19T12:59-0500';
+
 
     const buttonStyle =  {
       display: 'flex',

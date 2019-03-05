@@ -51,7 +51,7 @@ export default class Auth extends Component {
         <h2>LOGIN PAGE</h2>
         <Form onSubmit={this.handleSubmit} style={formStyle}>
           <Form.Input type='text' placeholder='username' name='username' onChange={this.handleChange} />
-          <Form.Input type='text' placeholder='password' name='password' onChange={this.handleChange} />
+          <Form.Input type='password' placeholder='password' name='password' onChange={this.handleChange} />
           <Button type='submit'>Submit</Button>
           {this.state.redirect ? <Redirect to='/' /> : null}
         </Form>

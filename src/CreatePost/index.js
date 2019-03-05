@@ -13,6 +13,7 @@ class CreatePost extends Component {
       category: '',
       time: '',
       guest: [],
+      date: ''
     }
   }
   handleChange = (e) => {
@@ -65,6 +66,7 @@ class CreatePost extends Component {
               <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Philosophy'/> Philosophy
               <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Music' /> Music <br/><br/><br/>
               <Form.Input name='time' type='time' placeholder='Write Hour For Ex (16)' onChange={this.handleChange} />
+              <Form.Input name='date' type="date" min="2018-01-01" max="2020-12-31" onChange={this.handleChange} />
               <Button>Create</Button>
             </Form>
 
