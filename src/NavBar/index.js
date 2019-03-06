@@ -10,7 +10,8 @@ export default class MenuExampleInverted extends Component {
     this.state = {
           activeItem: 'home',
           route: '/login',
-          authRoute: 'Login'
+          authRoute: 'Login',
+          room: true
         }
   }
 
@@ -34,10 +35,32 @@ export default class MenuExampleInverted extends Component {
           authRoute: 'Login'
         })
       }
-    })
+    });
+
+    socket.on('Personal', (data) => {
+      if (data === 'YEAH BITCH') {
+        this.setState({
+          on: true
+        })
+      }
+    });
   }
   render() {
     const { activeItem } = this.state;
+
+    const launchChatroom = () => {
+      console.log('HELLOOOOOO')
+      return(
+      <div>
+        <Link style={style} to="/personal">
+          <Menu.Item name='PersonalChatroom'
+            active={activeItem === 'PersonalChatroom'}
+            onClick={this.handleItemClick}>
+          </Menu.Item>
+        </Link>
+      </div>
+    );
+    };
 
     const style = {
       fontSize: '20px',
@@ -80,13 +103,16 @@ export default class MenuExampleInverted extends Component {
             </Menu.Item>
           </Link>
 
-
+          {this.state.on ? launchChatroom() : null}
+          
+          <div>
           <Link style={style} to="/messages">
             <Menu.Item name='Messages'
               active={activeItem === 'Messages'}
               onClick={this.handleItemClick}>
             </Menu.Item>
           </Link>
+          </div>
 
           <Link style={style} to={this.state.route} >
             <Menu.Item name={this.state.authRoute}

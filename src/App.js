@@ -17,6 +17,8 @@ import Music from './Categories/Music';
 import Hello from './Hello';
 import DirectMessages from './DirectMessages';
 import Chatroom from './ChatRoom';
+import PersonalChatroom from './PersonalChatroom';
+
 import { socket } from './index';
 
 
@@ -32,7 +34,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    console.log(this.state.timestamp, 'mirza')
+    console.log(this.state.timestamp, 'mirza');
     subscribeToTimer((err, timestamp) => this.setState({
       timestamp
     }));
@@ -43,9 +45,10 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Route exact path='/hello' component={Hello} />
+          <Route exact path='/personal' component={PersonalChatroom} />
           <Route exact path='/welcome' component={Welcome} />
           <Route exact path="/logout" component={Logout} />
-          <Route exact path="/login" component={Login} /> 
+          <Route exact path="/login" component={Login} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path="/" component={MainComponent} />
           <Route exact path='/mathematics' component={Mathematics} />

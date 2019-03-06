@@ -4,6 +4,9 @@ const subscribeToTimer = async (cb) => {
     await console.log(timestamp, 'mirza');
    return cb(null, timestamp);
   });
+  await socket.on('someEvent', async (data) => {
+  await console.log(data, 'fej;oiawjefo;iawjho;iawj;oiawjfe;onafewoeowa');
+  })
 
  await socket.emit('subscribeToTimer', 1000);
 }

@@ -58,7 +58,6 @@ class MainComponent extends Component {
           <div className='chatboxContainer'>
             <h2 className='chatboxContainerHeading'>HELLO {this.state.currentUser}</h2>
             <CreatePost />
-
           </div>
             <Categories />
         </div>
