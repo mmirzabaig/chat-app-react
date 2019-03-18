@@ -15,7 +15,6 @@ export default class Signup extends Component {
     }
   }
   handleChange = (e) => {
-    console.log(e.currentTarget.name)
     this.setState({
       [e.currentTarget.name]: e.currentTarget.value
     })

@@ -15,7 +15,6 @@ export default class Auth extends Component {
     }
   }
   handleChange = (e) => {
-    console.log(e.currentTarget.value)
     this.setState({
       [e.currentTarget.name]: e.currentTarget.value
     })
@@ -23,7 +22,6 @@ export default class Auth extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     socket.emit('loginUser', this.state);
-    console.log('hello')
   }
 
   componentDidMount() {

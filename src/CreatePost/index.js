@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Header, Image, Modal, Input, Form } from 'semantic-ui-react'
+import { Button, Header, Image, Modal, Input, Form, Dropdown } from 'semantic-ui-react'
 import { socket } from '../index';
 
 class CreatePost extends Component {
@@ -13,18 +13,20 @@ class CreatePost extends Component {
       category: '',
       time: '',
       guest: [],
-      date: ''
+      date: '',
+      duration: ''
     }
   }
   handleChange = (e) => {
-    console.log(e.currentTarget.name, e.currentTarget.value)
+    console.log(e.currentTarget.value)
+    console.log(e.currentTarget.name);
+
     this.setState({
       [e.currentTarget.name]: e.currentTarget.value
     });
   }
   handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('create post invokes');
     try {
       socket.emit('createNewPost', this.state)
     } catch (err) {
@@ -47,6 +49,34 @@ class CreatePost extends Component {
       width: '300px'
     }
 
+    const durationOptions = [
+  {
+    key: '15',
+    text: '15',
+    value: '15',
+    description: 'minutes'
+  },
+  {
+    key: '30',
+    text: '30',
+    value: '30',
+    description: 'minutes'
+  },
+  {
+    key: '45',
+    text: '45',
+    value: '45',
+    description: 'minutes'
+  },
+  {
+    name: 'duration',
+    key: '1',
+    text: '1',
+    value: '1',
+    description: 'hour'
+  },
+]
+
     const radioStyle = {
       marginLeft: '10px',
     }
@@ -67,6 +97,13 @@ class CreatePost extends Component {
               <Input style={radioStyle} type='radio' name='category' onChange={this.handleChange} value='Music' /> Music <br/><br/><br/>
               <Form.Input name='time' type='time' placeholder='Write Hour For Ex (16)' onChange={this.handleChange} />
               <Form.Input name='date' type="date" min="2018-01-01" max="2020-12-31" onChange={this.handleChange} />
+              <select style={{height: '40px'}} placeholder="Duration" name='duration' onChange={this.handleChange}>
+                <option value="" disabled selected>Select Duration</option>
+                <option value="15">15 Minutes</option>
+                <option value="30">30 Minutes</option>
+                <option value="45">45 Minutes</option>
+                <option value="1">1 Hour</option>
+              </select> <br />
               <Button>Create</Button>
             </Form>
 

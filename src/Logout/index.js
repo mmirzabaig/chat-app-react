@@ -8,7 +8,6 @@ class Logout extends Component {
     super();
   }
   componentDidMount() {
-    console.log('hello');
     socket.emit('logoutUser', 'loggedOut');
     socket.emit('session', 'loggedOut');
     this.props.history.push('/');

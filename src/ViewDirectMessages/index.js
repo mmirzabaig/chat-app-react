@@ -14,7 +14,6 @@ class ViewDirectMessages extends Component {
   }
 
   render(){
-    console.log(this.props.props, 'CURRENT PROPS')
     const display = this.props.props.map((item) => {
 
       return (

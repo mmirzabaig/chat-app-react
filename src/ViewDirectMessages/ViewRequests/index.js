@@ -14,7 +14,6 @@ class ViewRequests extends Component {
   }
 
   handleClick = (e, id) => {
-    console.log(id, 'YES IDIDIDID');
     e.preventDefault();
     socket.emit('handleChosen', id.id);
 
@@ -24,7 +23,6 @@ class ViewRequests extends Component {
   render(){
 
     const request = this.props.props.guest.map((item) => {
-      console.log(item, 'JAAAAAAYYYYYYYYY')
       return (
         <Card>
           <Card.Content>

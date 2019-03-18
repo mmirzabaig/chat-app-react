@@ -11,36 +11,49 @@ export default class MenuExampleInverted extends Component {
           activeItem: 'home',
           route: '/login',
           authRoute: 'Login',
-          room: true
+          room: true,
+          on: 'false'
         }
   }
 
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => {
+
+    this.setState({ activeItem: name })
+  }
   handleLoggin = () => {
 
   }
   componentDidMount(){
+
     socket.on('session', (data) => {
-      console.log('THIS IS LOGIN DATA', data);
       if (data === 'loggedIn') {
         this.setState({
           route: '/logout',
           authRoute: 'Logout'
-        })
+        });
       } else {
         this.setState({
           logged: true,
           route: '/login',
           authRoute: 'Login'
-        })
+        });
       }
     });
 
-    socket.on('Personal', (data) => {
-      if (data === 'YEAH BITCH') {
+    socket.on('initiateRoomLaunch', (data) => {
+      if (data.message === 'LAUNCH') {
+        console.log(data.roomID, 'data.roomID - 1');
         this.setState({
-          on: true
+          on: 'true',
+          uniqueRoomId: data.roomID
+        })
+      }
+    });
+    socket.on('initiateRoomDestroy', (data) => {
+      if (data === 'DESTROY') {
+        this.setState({
+          on: 'false',
         })
       }
     });
@@ -49,7 +62,10 @@ export default class MenuExampleInverted extends Component {
     const { activeItem } = this.state;
 
     const launchChatroom = () => {
-      console.log('HELLOOOOOO')
+      if(this.state.activeItem === 'PersonalChatroom' && !this.state.count) {
+        this.setState({count: '1'});
+        console.log(this.state.uniqueRoomId, 'TESTING');
+      }
       return(
       <div>
         <Link style={style} to="/personal">
@@ -103,8 +119,8 @@ export default class MenuExampleInverted extends Component {
             </Menu.Item>
           </Link>
 
-          {this.state.on ? launchChatroom() : null}
-          
+          {this.state.on === 'true' ? launchChatroom() : null}
+
           <div>
           <Link style={style} to="/messages">
             <Menu.Item name='Messages'

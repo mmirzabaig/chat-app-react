@@ -34,7 +34,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-    console.log(this.state.timestamp, 'mirza');
     subscribeToTimer((err, timestamp) => this.setState({
       timestamp
     }));
