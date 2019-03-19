@@ -14,12 +14,14 @@ class CompScieWebDes extends Component {
   }
 
   getCategories =  (e) => {
-      socket.emit('findCompScieWebDes', 'findCompScieWebDes')
+      // socket.emit('findCompScieWebDes', 'findCompScieWebDes')
     }
 
 
-  componentDidMount() {
-    socket.on('foundCompScieWebDes', (data) => {
+  async componentDidMount() {
+  await socket.emit('findCompScieWebDes', 'findCompScieWebDes')
+
+  await socket.on('foundCompScieWebDes', (data) => {
       if (data === 'Incorrect Username Or Password') {
         swal('Please Log In');
       } else {
@@ -30,7 +32,7 @@ class CompScieWebDes extends Component {
       }
     })
 
-    this.getCategories();
+    // this.getCategories();
   }
 
   render() {

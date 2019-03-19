@@ -17,16 +17,6 @@ class Books extends Component {
         socket.emit('findBooks', 'findBooks')
       }
 
-      componentDidMount() {
-        socket.on('foundMathematics', (data) => {
-          console.log(data, 'YES ITS DATAAAA')
-
-
-        })
-
-        this.getCategories();
-      }
-
     componentDidMount() {
       socket.on('foundBooks', (data) => {
         console.log(data, 'MirZA')
