@@ -11,15 +11,17 @@ class PersonalChatroom extends Component {
     }
   }
 
-  async componentDidMount(){
+   componentDidMount(){
 
-    await socket.on('uniqueRoomId', (data) => {
-      this.setState({roomID: data});
-      console.log(this.state.roomID, 'uniqueRoomId + SETSTATTESTSEAT');
+     socket.on('uniqueRoomId', async (data) => {
+    await  console.log(data);
+    await  this.setState({roomID: data});
+    await  console.log(this.state.roomID, 'uniqueRoomId + SETSTATTESTSEAT');
     });
 
-  await socket.on(this.state.roomID + 'Pessages', (msgObj) => {
-      this.setState({
+   socket.on(this.state.roomID + 'Pessages', async (msgObj) => {
+  await  console.log(msgObj);
+    await  this.setState({
         messages: [...msgObj],
       })
     });

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Menu, Segment, Image} from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import { socket } from '../index';
+import { subscribeToTimer } from '../api';
+
 
 
 export default class MenuExampleInverted extends Component {
@@ -12,7 +14,8 @@ export default class MenuExampleInverted extends Component {
           route: '/login',
           authRoute: 'Login',
           room: true,
-          on: 'false'
+          on: 'false',
+          userID: ''
         }
   }
 
@@ -24,13 +27,38 @@ export default class MenuExampleInverted extends Component {
   handleLoggin = () => {
 
   }
+
+  emitEvent = (info) => {
+    console.log('Hello Jim');
+    socket.emit('LIVE-LAUNCH', info);
+  }
   componentDidMount(){
 
+    subscribeToTimer((err, timestamp) => this.setState({
+      timestamp,
+      updateState: false
+    }));
+
+    socket.on('redirectMessageToServer', async (info) => {
+
+      if (info.guest === this.state.userID) {
+        await console.log('LIVE LAUNCH')
+        if (info.message === 'LIVE-LAUNCH') {
+        await console.log(info);
+          await console.log('REDIRECTmESSAGEtOsERVER');
+          await this.emitEvent(info);
+        }
+      }
+
+    });
+
     socket.on('session', (data) => {
-      if (data === 'loggedIn') {
+      console.log(data.userID, '56787654345678765434567');
+      if (data.status === 'loggedIn') {
         this.setState({
           route: '/logout',
-          authRoute: 'Logout'
+          authRoute: 'Logout',
+          userID: data.userID
         });
       } else {
         this.setState({
