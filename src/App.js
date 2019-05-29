@@ -1,4 +1,3 @@
-import { subscribeToTimer } from './api';
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
@@ -18,8 +17,7 @@ import Hello from './Hello';
 import DirectMessages from './DirectMessages';
 import Chatroom from './ChatRoom';
 import PersonalChatroom from './PersonalChatroom';
-
-import { socket } from './index';
+import UserProfile from './UserProfile';
 
 
 
@@ -39,23 +37,18 @@ class App extends Component {
   }
 
 
-  componentDidMount(){
-    // subscribeToTimer((err, timestamp) => this.setState({
-    //   timestamp,
-    //   updateState: false
-    // }));
-  }
   render() {
     return (
       <div className="App">
         <NavBar />
         <Switch>
-          <Route exact path='/hello' render={Hello} />
+          <Route exact path='/hello' component={Hello} />
+          <Route exact path='/profile' component={UserProfile} />
           <Route exact path='/personal' component={PersonalChatroom} />
           <Route exact path='/welcome' component={Welcome} />
           <Route exact path="/logout" component={Logout} />
           <Route exact path="/login" component={Login} />
-          <Route exact path='/signup' render={Signup} />
+          <Route exact path='/signup' component={Signup} />
           <Route exact path="/" component={MainComponent} />
           <Route exact path='/mathematics' component={Mathematics} />
           <Route exact path='/books' component={Books} />

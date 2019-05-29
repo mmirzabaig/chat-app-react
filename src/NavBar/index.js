@@ -126,7 +126,7 @@ export default class MenuExampleInverted extends Component {
             </Menu.Item>
           </Link>
 
-          <Link style={style} to="/">
+          <Link style={style} to="/profile">
             <Menu.Item name='Profile'
               active={activeItem === 'View Your Profile'}
               onClick={this.handleItemClick}>
