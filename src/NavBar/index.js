@@ -69,18 +69,18 @@ export default class MenuExampleInverted extends Component {
       }
     });
 
-    socket.on('initiateRoomLaunch', (data) => {
+    socket.on('initiateRoomLaunch', async (data) => {
       if (data.message === 'LAUNCH') {
-        console.log(data.roomID, 'data.roomID - 1');
-        this.setState({
+        await console.log(data.roomID, 'data.roomID - 1');
+        await this.setState({
           on: 'true',
           uniqueRoomId: data.roomID
         })
       }
     });
-    socket.on('initiateRoomDestroy', (data) => {
+    socket.on('initiateRoomDestroy', async (data) => {
       if (data === 'DESTROY') {
-        this.setState({
+      await  this.setState({
           on: 'false',
         })
       }

@@ -176,10 +176,7 @@ export default class UserProfile extends Component {
         // UpdateBar(data['Percent']);
         var Place = data['Place'] * 524288; //The Next Blocks Starting Position
         var NewFile; //The Variable that will hold the new Block of Data
-            console.log(this.state.SelectedFile, '1244124')
-            console.log(this.state.SelectedFile[0], '1244124')
-            console.log(this.state.SelectedFile[0][0], '1244124')
-            console.log(this.state.SelectedFile[0][0].size, '1244124')
+
             let currnetFile = this.state.SelectedFile[0][0];
 
             NewFile = currnetFile.slice(Place, Place + Math.min(524288, (this.state.SelectedFile[0][0].size-Place)));

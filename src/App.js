@@ -57,7 +57,6 @@ class App extends Component {
           <Route exact path='/compsciewebdes' component={CompScieWebDes} />
           <Route exact path='/music' component={Music} />
           <Route exact path='/messages' component={DirectMessages} />
-          <Route exact path='/chatroom' component={Chatroom} />
 
         </Switch>
       </div>

@@ -14,6 +14,7 @@ class ChatRoom extends Component {
   componentDidMount(){
 
     socket.on('messages', (msgObj) => {
+      console.log(msgObj)
       this.setState({
         messages: [...msgObj],
       })
